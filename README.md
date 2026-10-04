@@ -1,19 +1,18 @@
 # Disney Streaming Analytics Pipeline
 
-A real-time pipeline that processes simulated streaming-viewing events and
-computes trending titles over a 5-minute sliding window.
+Pipeline that computes trending films over a sliding window and processes simulated streaming occurences.
 
 ## Architecture
-Generator -> Processor (sliding window) -> console leaderboard
+Generator -> Processor (sliding window) -> Console leaderboard
 
-## Run it
+## Running Code
     python generator.py | python processor.py
 
-## Tests
+## Test
     pytest
 
 ## Design notes
-- Sliding window uses a deque plus a Counter, so each event is added and
-  removed once (constant work per event).
-- Uses event timestamps rather than the system clock, so it is easy to test.
-- Known limitation: assumes events arrive in time order.
+- Sliding window uses a deque plus a Counter. Each event is added and
+  removed once (constant work/event).
+- Uses event timestamps for efficient testing.
+- Limitation: Events are in an assumed time order.
